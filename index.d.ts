@@ -1,136 +1,236 @@
-// Type definitions for @colors/colors 1.4+
-// Project: https://github.com/Marak/colors.js
-// Definitions by: Bart van der Schoor <https://github.com/Bartvds>, Staffan Eketorp <https://github.com/staeke>
-// Definitions: https://github.com/DABH/colors.js
+export interface CSPair { // eslint-disable-line @typescript-eslint/naming-convention
+	/**
+	The ANSI terminal control sequence for starting this style.
+	*/
+	readonly open: string;
 
-export interface Color {
-    (text: string): string;
-
-    strip: Color;
-    stripColors: Color;
-
-    black: Color;
-    red: Color;
-    green: Color;
-    yellow: Color;
-    blue: Color;
-    magenta: Color;
-    cyan: Color;
-    white: Color;
-    gray: Color;
-    grey: Color;
-
-    bgBlack: Color;
-    bgRed: Color;
-    bgGreen: Color;
-    bgYellow: Color;
-    bgBlue: Color;
-    bgMagenta: Color;
-    bgCyan: Color;
-    bgWhite: Color;
-
-    reset: Color;
-    bold: Color;
-    dim: Color;
-    italic: Color;
-    underline: Color;
-    inverse: Color;
-    hidden: Color;
-    strikethrough: Color;
-
-    rainbow: Color;
-    zebra: Color;
-    america: Color;
-    trap: Color;
-    random: Color;
-    zalgo: Color;
+	/**
+	The ANSI terminal control sequence for ending this style.
+	*/
+	readonly close: string;
 }
 
-export function enable(): void;
-export function disable(): void;
-export function setTheme(theme: any): void;
+export interface ColorBase {
+	/**
+	The ANSI terminal control sequence for ending this color.
+	*/
+	readonly close: string;
 
-export let enabled: boolean;
+	ansi(code: number): string;
 
-export const strip: Color;
-export const stripColors: Color;
+	ansi256(code: number): string;
 
-export const black: Color;
-export const red: Color;
-export const green: Color;
-export const yellow: Color;
-export const blue: Color;
-export const magenta: Color;
-export const cyan: Color;
-export const white: Color;
-export const gray: Color;
-export const grey: Color;
-
-export const bgBlack: Color;
-export const bgRed: Color;
-export const bgGreen: Color;
-export const bgYellow: Color;
-export const bgBlue: Color;
-export const bgMagenta: Color;
-export const bgCyan: Color;
-export const bgWhite: Color;
-
-export const reset: Color;
-export const bold: Color;
-export const dim: Color;
-export const italic: Color;
-export const underline: Color;
-export const inverse: Color;
-export const hidden: Color;
-export const strikethrough: Color;
-
-export const rainbow: Color;
-export const zebra: Color;
-export const america: Color;
-export const trap: Color;
-export const random: Color;
-export const zalgo: Color;
-
-declare global {
-    interface String {
-        strip: string;
-        stripColors: string;
-
-        black: string;
-        red: string;
-        green: string;
-        yellow: string;
-        blue: string;
-        magenta: string;
-        cyan: string;
-        white: string;
-        gray: string;
-        grey: string;
-
-        bgBlack: string;
-        bgRed: string;
-        bgGreen: string;
-        bgYellow: string;
-        bgBlue: string;
-        bgMagenta: string;
-        bgCyan: string;
-        bgWhite: string;
-
-        reset: string;
-        // @ts-ignore
-        bold: string;
-        dim: string;
-        italic: string;
-        underline: string;
-        inverse: string;
-        hidden: string;
-        strikethrough: string;
-
-        rainbow: string;
-        zebra: string;
-        america: string;
-        trap: string;
-        random: string;
-        zalgo: string;
-    }
+	ansi16m(red: number, green: number, blue: number): string;
 }
+
+export interface Modifier {
+	/**
+	Resets the current color chain.
+	*/
+	readonly reset: CSPair;
+
+	/**
+	Make text bold.
+	*/
+	readonly bold: CSPair;
+
+	/**
+	Emitting only a small amount of light.
+	*/
+	readonly dim: CSPair;
+
+	/**
+	Make text italic. (Not widely supported)
+	*/
+	readonly italic: CSPair;
+
+	/**
+	Make text underline. (Not widely supported)
+	*/
+	readonly underline: CSPair;
+
+	/**
+	Make text overline.
+
+	Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash.
+	*/
+	readonly overline: CSPair;
+
+	/**
+	Inverse background and foreground colors.
+	*/
+	readonly inverse: CSPair;
+
+	/**
+	Prints the text, but makes it invisible.
+	*/
+	readonly hidden: CSPair;
+
+	/**
+	Puts a horizontal line through the center of the text. (Not widely supported)
+	*/
+	readonly strikethrough: CSPair;
+}
+
+export interface ForegroundColor {
+	readonly black: CSPair;
+	readonly red: CSPair;
+	readonly green: CSPair;
+	readonly yellow: CSPair;
+	readonly blue: CSPair;
+	readonly cyan: CSPair;
+	readonly magenta: CSPair;
+	readonly white: CSPair;
+
+	/**
+	Alias for `blackBright`.
+	*/
+	readonly gray: CSPair;
+
+	/**
+	Alias for `blackBright`.
+	*/
+	readonly grey: CSPair;
+
+	readonly blackBright: CSPair;
+	readonly redBright: CSPair;
+	readonly greenBright: CSPair;
+	readonly yellowBright: CSPair;
+	readonly blueBright: CSPair;
+	readonly cyanBright: CSPair;
+	readonly magentaBright: CSPair;
+	readonly whiteBright: CSPair;
+}
+
+export interface BackgroundColor {
+	readonly bgBlack: CSPair;
+	readonly bgRed: CSPair;
+	readonly bgGreen: CSPair;
+	readonly bgYellow: CSPair;
+	readonly bgBlue: CSPair;
+	readonly bgCyan: CSPair;
+	readonly bgMagenta: CSPair;
+	readonly bgWhite: CSPair;
+
+	/**
+	Alias for `bgBlackBright`.
+	*/
+	readonly bgGray: CSPair;
+
+	/**
+	Alias for `bgBlackBright`.
+	*/
+	readonly bgGrey: CSPair;
+
+	readonly bgBlackBright: CSPair;
+	readonly bgRedBright: CSPair;
+	readonly bgGreenBright: CSPair;
+	readonly bgYellowBright: CSPair;
+	readonly bgBlueBright: CSPair;
+	readonly bgCyanBright: CSPair;
+	readonly bgMagentaBright: CSPair;
+	readonly bgWhiteBright: CSPair;
+}
+
+export interface ConvertColor {
+	/**
+	Convert from the RGB color space to the ANSI 256 color space.
+
+	@param red - (`0...255`)
+	@param green - (`0...255`)
+	@param blue - (`0...255`)
+	*/
+	rgbToAnsi256(red: number, green: number, blue: number): number;
+
+	/**
+	Convert from the RGB HEX color space to the RGB color space.
+
+	@param hex - A hexadecimal string containing RGB data.
+	*/
+	hexToRgb(hex: string): [red: number, green: number, blue: number];
+
+	/**
+	Convert from the RGB HEX color space to the ANSI 256 color space.
+
+	@param hex - A hexadecimal string containing RGB data.
+	*/
+	hexToAnsi256(hex: string): number;
+
+	/**
+	Convert from the ANSI 256 color space to the ANSI 16 color space.
+
+	@param code - A number representing the ANSI 256 color.
+	*/
+	ansi256ToAnsi(code: number): number;
+
+	/**
+	Convert from the RGB color space to the ANSI 16 color space.
+
+	@param red - (`0...255`)
+	@param green - (`0...255`)
+	@param blue - (`0...255`)
+	*/
+	rgbToAnsi(red: number, green: number, blue: number): number;
+
+	/**
+	Convert from the RGB HEX color space to the ANSI 16 color space.
+
+	@param hex - A hexadecimal string containing RGB data.
+	*/
+	hexToAnsi(hex: string): number;
+}
+
+/**
+Basic modifier names.
+*/
+export type ModifierName = keyof Modifier;
+
+/**
+Basic foreground color names.
+
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type ForegroundColorName = keyof ForegroundColor;
+
+/**
+Basic background color names.
+
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type BackgroundColorName = keyof BackgroundColor;
+
+/**
+Basic color names. The combination of foreground and background color names.
+
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type ColorName = ForegroundColorName | BackgroundColorName;
+
+/**
+Basic modifier names.
+*/
+export const modifierNames: readonly ModifierName[];
+
+/**
+Basic foreground color names.
+*/
+export const foregroundColorNames: readonly ForegroundColorName[];
+
+/**
+Basic background color names.
+*/
+export const backgroundColorNames: readonly BackgroundColorName[];
+
+/*
+Basic color names. The combination of foreground and background color names.
+*/
+export const colorNames: readonly ColorName[];
+
+declare const ansiStyles: {
+	readonly modifier: Modifier;
+	readonly color: ColorBase & ForegroundColor;
+	readonly bgColor: ColorBase & BackgroundColor;
+	readonly codes: ReadonlyMap<number, number>;
+} & ForegroundColor & BackgroundColor & Modifier & ConvertColor;
+
+export default ansiStyles;
