@@ -1,143 +1,59 @@
-# @isaacs/cliui
+# MahadevPlywoodHardware
 
-Temporary fork of [cliui](http://npm.im/cliui).
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
 
-![ci](https://github.com/yargs/cliui/workflows/ci/badge.svg)
-[![NPM version](https://img.shields.io/npm/v/cliui.svg)](https://www.npmjs.com/package/cliui)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-![nycrc config on GitHub](https://img.shields.io/nycrc/yargs/cliui)
+## Development server
 
-easily create complex multi-column command-line-interfaces.
+To start a local development server, run:
 
-## Example
-
-```js
-const ui = require('cliui')()
-
-ui.div('Usage: $0 [command] [options]')
-
-ui.div({
-  text: 'Options:',
-  padding: [2, 0, 1, 0]
-})
-
-ui.div(
-  {
-    text: "-f, --file",
-    width: 20,
-    padding: [0, 4, 0, 4]
-  },
-  {
-    text: "the file to load." +
-      chalk.green("(if this description is long it wraps).")
-    ,
-    width: 20
-  },
-  {
-    text: chalk.red("[required]"),
-    align: 'right'
-  }
-)
-
-console.log(ui.toString())
+```bash
+ng serve
 ```
 
-## Deno/ESM Support
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-As of `v7` `cliui` supports [Deno](https://github.com/denoland/deno) and
-[ESM](https://nodejs.org/api/esm.html#esm_ecmascript_modules):
+## Code scaffolding
 
-```typescript
-import cliui from "https://deno.land/x/cliui/deno.ts";
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-const ui = cliui({})
-
-ui.div('Usage: $0 [command] [options]')
-
-ui.div({
-  text: 'Options:',
-  padding: [2, 0, 1, 0]
-})
-
-ui.div({
-  text: "-f, --file",
-  width: 20,
-  padding: [0, 4, 0, 4]
-})
-
-console.log(ui.toString())
+```bash
+ng generate component component-name
 ```
 
-<img width="500" src="screenshot.png">
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-## Layout DSL
-
-cliui exposes a simple layout DSL:
-
-If you create a single `ui.div`, passing a string rather than an
-object:
-
-* `\n`: characters will be interpreted as new rows.
-* `\t`: characters will be interpreted as new columns.
-* `\s`: characters will be interpreted as padding.
-
-**as an example...**
-
-```js
-var ui = require('./')({
-  width: 60
-})
-
-ui.div(
-  'Usage: node ./bin/foo.js\n' +
-  '  <regex>\t  provide a regex\n' +
-  '  <glob>\t  provide a glob\t [required]'
-)
-
-console.log(ui.toString())
+```bash
+ng generate --help
 ```
 
-**will output:**
+## Building
 
-```shell
-Usage: node ./bin/foo.js
-  <regex>  provide a regex
-  <glob>   provide a glob          [required]
+To build the project run:
+
+```bash
+ng build
 ```
 
-## Methods
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-```js
-cliui = require('cliui')
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
 ```
 
-### cliui({width: integer})
+## Running end-to-end tests
 
-Specify the maximum width of the UI being generated.
-If no width is provided, cliui will try to get the current window's width and use it, and if that doesn't work, width will be set to `80`.
+For end-to-end (e2e) testing, run:
 
-### cliui({wrap: boolean})
+```bash
+ng e2e
+```
 
-Enable or disable the wrapping of text in a column.
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-### cliui.div(column, column, column)
+## Additional Resources
 
-Create a row with any number of columns, a column
-can either be a string, or an object with the following
-options:
-
-* **text:** some text to place in the column.
-* **width:** the width of a column.
-* **align:** alignment, `right` or `center`.
-* **padding:** `[top, right, bottom, left]`.
-* **border:** should a border be placed around the div?
-
-### cliui.span(column, column, column)
-
-Similar to `div`, except the next row will be appended without
-a new line being created.
-
-### cliui.resetOutput()
-
-Resets the UI elements of the current cliui instance, maintaining the values
-set for `width` and `wrap`.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
