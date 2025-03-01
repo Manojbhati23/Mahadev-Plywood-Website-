@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahadev Plywood & Hardware</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#8B4513',
+secondary: '#D2691E'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.slide-enter {
+animation: slideIn 0.5s ease-out;
+}
+@keyframes slideIn {
+from { transform: translateY(-100%); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+.cart-bounce {
+animation: bounce 0.5s ease-in-out;
+}
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+.hover-scale {
+transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+transform: scale(1.05);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<div class="bg-primary text-white py-2">
+<div class="container mx-auto px-4 flex justify-between items-center">
+<div class="flex items-center space-x-4">
+<a href="tel:7676154124" class="flex items-center hover:text-gray-200">
+<i class="ri-phone-line ri-lg mr-2"></i>
+<span>+91 7676154124</span>
+</a>
+<a href="mailto:rawatandsonstechno@gmail.com" class="flex items-center hover:text-gray-200">
+<i class="ri-mail-line ri-lg mr-2"></i>
+<span>rawatandsonstechno@gmail.com</span>
+</a>
+</div>
+<div class="flex items-center space-x-4">
+<a href="#" class="hover:text-gray-200">Track Order</a>
+<a href="#" class="hover:text-gray-200">Store Locator</a>
+</div>
+</div>
+</div>
+<header class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center">
+<a href="/" class="flex items-center">
+<h1 class="text-3xl font-['Pacifico'] text-primary animate-pulse">Mahadev</h1>
+</a>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+  <a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+  <a href="/products.html" class="text-gray-700 hover:text-primary transition-colors">Products</a>
+  <a href="/categories.html" class="text-gray-700 hover:text-primary transition-colors">Categories</a>
+  <a href="/about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+  <a href="/contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="flex items-center space-x-6">
+<div class="relative">
+<input type="text" placeholder="Search products..." class="w-64 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-primary">
+<button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+<i class="ri-search-line text-gray-400"></i>
+</button>
+</div>
+<div class="relative" id="cartButton">
+<a href="/cart.html" class="relative" onclick="event.preventDefault(); window.location.href='/cart.html';">
+<button class="relative">
+<i class="ri-shopping-cart-2-line ri-2x text-gray-700"></i>
+<span id="cartCount" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+</button>
+</a>
+</div>
+<div class="relative" id="userMenu">
+<button class="flex items-center space-x-2" onclick="toggleUserMenu()">
+<i class="ri-user-line ri-2x text-gray-700"></i>
+</button>
+<div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50">
+<a href="/profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Profile</a>
+<a href="/orders.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+<a href="/wishlist.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Wishlist</a>
+<hr class="my-2">
+<a href="/login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Login</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main>
+<section class="relative bg-gradient-to-r from-primary to-secondary text-white py-20">
+<div class="container mx-auto px-4 flex items-center">
+<div class="w-1/2 pr-12">
+<h1 class="text-5xl font-bold mb-6">Mahadev Plywood & Hardware</h1>
+<p class="text-xl mb-8">Discover our premium selection of plywood, doors, and hardware tools for your construction needs</p>
+<button class="bg-white text-primary px-8 py-3 rounded-button font-semibold hover:bg-gray-100 transition-colors">Shop Now</button>
+</div>
+<div class="w-1/2">
+<img src="https://public.readdy.ai/ai/img_res/9586db0ef22f9b6120e2159b65e5f27e.jpg" alt="Store Display" class="rounded-lg shadow-xl">
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">Our Categories</h2>
+<div class="grid grid-cols-4 gap-8">
+<div class="hover-scale">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/2399aa476357b4e3e8616f39aaa7eb54.jpg" alt="Doors" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Doors</h3>
+<p class="text-gray-600 mb-4">Premium wooden, PVC, and designer doors</p>
+<a href="/products.html" class="text-primary font-semibold flex items-center" onclick="exploreProduct('Doors')">
+Explore <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="hover-scale">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/30db29779d2e929c32b3a33c4b583fc2.jpg" alt="Plywood" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Plywood</h3>
+<p class="text-gray-600 mb-4">Commercial, Marine, and BWP Grade</p>
+<a href="/products.html" class="text-primary font-semibold flex items-center" onclick="exploreProduct('Plywood')">
+Explore <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="hover-scale">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/557dbfbb2ccd458023755518c32b4476.jpg" alt="Sanitary" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Sanitary Items</h3>
+<p class="text-gray-600 mb-4">Faucets, fixtures, and accessories</p>
+<a href="/products.html" class="text-primary font-semibold flex items-center" onclick="exploreProduct('Sanitary Items')">
+Explore <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="hover-scale">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/e395aca13e522c5aa098f96dc06f8cc4.jpg" alt="Tools" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Electrical Tools</h3>
+<p class="text-gray-600 mb-4">Professional power tools</p>
+<a href="/products.html" class="text-primary font-semibold flex items-center" onclick="exploreProduct('Electrical Tools')">
+Explore <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+<div class="grid grid-cols-4 gap-8">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
+<img src="https://public.readdy.ai/ai/img_res/e12d657bb17dda6a783cff1836d14059.jpg" alt="Teak Door" class="w-full h-64 object-cover">
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Premium Teak Door</h3>
+<p class="text-gray-600 mb-4">Hand-carved design</p>
+<div class="flex justify-between items-center">
+<span class="text-xl font-bold text-primary">₹24,999</span>
+<button onclick="addToCartAndRedirect(this)" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
+<img src="https://public.readdy.ai/ai/img_res/b5d33385924d9757f9008232adda4594.jpg" alt="Marine Plywood" class="w-full h-64 object-cover">
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Marine Grade Plywood</h3>
+<p class="text-gray-600 mb-4">Water-resistant, 19mm</p>
+<div class="flex justify-between items-center">
+<span class="text-xl font-bold text-primary">₹2,899</span>
+<button onclick="addToCartAndRedirect(this)" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
+<img src="https://public.readdy.ai/ai/img_res/2722e73f9156c0b482ec16eaff929939.jpg" alt="Premium Faucet" class="w-full h-64 object-cover">
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Premium Basin Faucet</h3>
+<p class="text-gray-600 mb-4">Chrome finish</p>
+<div class="flex justify-between items-center">
+<span class="text-xl font-bold text-primary">₹3,499</span>
+<button onclick="addToCartAndRedirect(this)" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
+<img src="https://public.readdy.ai/ai/img_res/4004dd2efbe8c347d92ea841f8a5d731.jpg" alt="Power Drill" class="w-full h-64 object-cover">
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-2">Cordless Power Drill</h3>
+<p class="text-gray-600 mb-4">20V, with battery</p>
+<div class="flex justify-between items-center">
+<span class="text-xl font-bold text-primary">₹8,999</span>
+<button onclick="addToCartAndRedirect(this)" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="bg-gradient-to-r from-primary to-secondary rounded-lg text-white p-12">
+<div class="grid grid-cols-2 gap-12">
+<div>
+<h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+<div class="space-y-4">
+<div class="flex items-center">
+<i class="ri-phone-line ri-2x mr-4"></i>
+<div>
+<p class="font-semibold">Phone</p>
+<a href="tel:7676154124" class="hover:underline">+91 7676154124</a>
+</div>
+</div>
+<div class="flex items-center">
+<i class="ri-mail-line ri-2x mr-4"></i>
+<div>
+<p class="font-semibold">Email</p>
+<a href="mailto:rawatandsonstechno@gmail.com" class="hover:underline">rawatandsonstechno@gmail.com</a>
+</div>
+</div>
+<div class="flex items-center">
+<i class="ri-time-line ri-2x mr-4"></i>
+<div>
+<p class="font-semibold">Business Hours</p>
+<p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+<p>Sunday: Closed</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<form class="space-y-4">
+<input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-button border-none">
+<input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-button border-none">
+<textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded-button border-none"></textarea>
+<button type="submit" class="bg-white text-primary px-6 py-3 rounded-button font-semibold hover:bg-gray-100 transition-colors">Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">About Us</h3>
+<p class="text-gray-400">Mahadev Plywood & Hardware - Your trusted partner for quality building materials and hardware solutions since 1995.</p>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">Products</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Categories</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Contact Info</h3>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-400">
+<i class="ri-phone-line mr-2"></i>
+<a href="tel:7676154124">+91 7676154124</a>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-mail-line mr-2"></i>
+<a href="mailto:rawatandsonstechno@gmail.com">rawatandsonstechno@gmail.com</a>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Newsletter</h3>
+<form class="space-y-4">
+<input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded-button bg-gray-800 border-none text-white">
+<button type="submit" class="bg-primary text-white px-6 py-2 rounded-button hover:bg-secondary transition-colors">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8">
+<div class="flex justify-center space-x-6 mb-4">
+<a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-white">
+<i class="ri-facebook-fill ri-2x"></i>
+</a>
+<a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-white">
+<i class="ri-instagram-fill ri-2x"></i>
+</a>
+<a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-white">
+<i class="ri-twitter-fill ri-2x"></i>
+</a>
+<a href="https://youtube.com" target="_blank" class="text-gray-400 hover:text-white">
+<i class="ri-youtube-fill ri-2x"></i>
+</a>
+</div>
+<p class="text-center text-gray-400">&copy; 2025 Mahadev Plywood & Hardware. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-6 right-6 z-50">
+<button id="contactFloat" class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-secondary transition-colors">
+<i class="ri-customer-service-2-line ri-2x"></i>
+</button>
+</div>
+<script>
+let cartItems = [];
+let cartCount = 0;
+function addToCartAndRedirect(button) {
+const productCard = button.closest('.bg-white');
+const productName = productCard.querySelector('h3').textContent;
+const productPrice = productCard.querySelector('.text-primary').textContent;
+const productImage = productCard.querySelector('img').src;
+const product = {
+name: productName,
+price: productPrice,
+image: productImage,
+quantity: 1
+};
+
+const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const existingProductIndex = existingCartItems.findIndex(item => item.name === product.name);
+
+if (existingProductIndex !== -1) {
+existingCartItems[existingProductIndex].quantity += 1;
+} else {
+existingCartItems.push(product);
+}
+
+localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+cartCount = existingCartItems.reduce((total, item) => total + item.quantity, 0);
+document.getElementById('cartCount').textContent = cartCount;
+
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg slide-enter';
+notification.innerHTML = `
+<div class="flex items-center justify-between">
+  <span>${productName} added to cart!</span>
+  <div class="ml-4 flex space-x-2">
+    <button onclick="window.location.href='/cart.html'" class="bg-white text-green-500 px-3 py-1 rounded-button text-sm">View Cart</button>
+    <button onclick="this.closest('div.fixed').remove()" class="text-white hover:text-gray-200">
+      <i class="ri-close-line"></i>
+    </button>
+  </div>
+</div>`;
+document.body.appendChild(notification);
+
+setTimeout(() => {
+notification.remove();
+}, 3000);
+}
+// Add this to handle cart page initialization
+if (window.location.pathname === '/cart.html') {
+const cartContainer = document.createElement('div');
+cartContainer.className = 'container mx-auto px-4 py-8';
+cartContainer.innerHTML = `
+<h1 class="text-3xl font-bold mb-8">Shopping Cart</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2">
+<div id="cartItemsList" class="space-y-4"></div>
+<div class="mt-8">
+  <h2 class="text-xl font-bold mb-4">Delivery Options</h2>
+  <div class="space-y-4 bg-white rounded-lg shadow-lg p-6">
+    <div class="flex items-center space-x-4">
+      <input type="radio" name="delivery" id="standard" value="standard" checked class="w-4 h-4 text-primary">
+      <label for="standard" class="flex-1">
+        <div class="font-semibold">Standard Delivery</div>
+        <div class="text-sm text-gray-500">3-5 business days</div>
+      </label>
+      <span class="font-semibold">₹50</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <input type="radio" name="delivery" id="express" value="express" class="w-4 h-4 text-primary">
+      <label for="express" class="flex-1">
+        <div class="font-semibold">Express Delivery</div>
+        <div class="text-sm text-gray-500">1-2 business days</div>
+      </label>
+      <span class="font-semibold">₹150</span>
+    </div>
+  </div>
+  
+  <div class="mt-8">
+    <h2 class="text-xl font-bold mb-4">Delivery Address</h2>
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <form id="addressForm" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" placeholder="First Name" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+          <input type="text" placeholder="Last Name" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+        </div>
+        <input type="text" placeholder="Street Address" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" placeholder="City" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+          <input type="text" placeholder="State" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+        </div>
+        <input type="text" placeholder="PIN Code" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+        <input type="tel" placeholder="Phone Number" class="w-full px-4 py-2 rounded-button border border-gray-300" required>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<div class="md:col-span-1">
+<div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+<h2 class="text-xl font-bold mb-4">Order Summary</h2>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span id="subtotal">₹0</span>
+</div>
+<div class="flex justify-between">
+<span>Delivery</span>
+<span id="deliveryFee">₹50</span>
+</div>
+<div class="flex justify-between">
+<span>Tax (18%)</span>
+<span id="tax">₹0</span>
+</div>
+<div class="border-t pt-2 mt-2">
+<div class="flex justify-between font-bold">
+<span>Total</span>
+<span id="total">₹0</span>
+</div>
+</div>
+</div>
+<button onclick="proceedToPayment()" class="w-full bg-primary text-white py-3 rounded-button hover:bg-secondary transition-colors">
+Proceed to Payment
+</button>
+</div>
+</div>
+</div>
+`;
+document.querySelector('main').appendChild(cartContainer);
+const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const cartItemsList = document.getElementById('cartItemsList');
+function updateCart() {
+cartItemsList.innerHTML = '';
+let subtotal = 0;
+savedCartItems.forEach((item, index) => {
+const price = parseFloat(item.price.replace('₹', '').replace(',', ''));
+subtotal += price * item.quantity;
+
+const deliveryFee = document.querySelector('input[name="delivery"]:checked').value === 'standard' ? 50 : 150;
+document.getElementById('deliveryFee').textContent = `₹${deliveryFee}`;
+cartItemsList.innerHTML += `
+<div class="bg-white rounded-lg shadow-lg p-4 flex items-center">
+<img src="${item.image}" alt="${item.name}" class="w-24 h-24 object-cover rounded-lg">
+<div class="ml-4 flex-grow">
+<h3 class="font-semibold">${item.name}</h3>
+<p class="text-primary">${item.price}</p>
+<div class="flex items-center mt-2">
+<button onclick="updateQuantity(${index}, -1)" class="bg-gray-200 px-2 py-1 rounded-l-button">-</button>
+<span class="px-4 py-1 bg-gray-100">${item.quantity}</span>
+<button onclick="updateQuantity(${index}, 1)" class="bg-gray-200 px-2 py-1 rounded-r-button">+</button>
+</div>
+</div>
+<button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700">
+<i class="ri-delete-bin-line ri-lg"></i>
+</button>
+</div>
+`;
+});
+const tax = subtotal * 0.18;
+const total = subtotal + tax;
+document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+}
+window.updateQuantity = function(index, change) {
+savedCartItems[index].quantity = Math.max(1, savedCartItems[index].quantity + change);
+localStorage.setItem('cartItems', JSON.stringify(savedCartItems));
+updateCart();
+};
+window.removeItem = function(index) {
+savedCartItems.splice(index, 1);
+localStorage.setItem('cartItems', JSON.stringify(savedCartItems));
+updateCart();
+};
+window.proceedToPayment = function() {
+const addressForm = document.getElementById('addressForm');
+if (!addressForm.checkValidity()) {
+  const notification = document.createElement('div');
+  notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg slide-enter';
+  notification.textContent = 'Please fill in all delivery details';
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 3000);
+  return;
+}
+const paymentModal = document.createElement('div');
+paymentModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+paymentModal.innerHTML = `
+<div class="bg-white rounded-lg p-8 max-w-md w-full">
+<h2 class="text-2xl font-bold mb-4">Select Payment Method</h2>
+<div class="space-y-4">
+<button onclick="handlePayment('upi')" class="w-full flex items-center justify-between p-4 border rounded-button hover:bg-gray-50">
+<span>UPI</span>
+<i class="ri-qr-code-line"></i>
+</button>
+<button onclick="handlePayment('card')" class="w-full flex items-center justify-between p-4 border rounded-button hover:bg-gray-50">
+<span>Credit/Debit Card</span>
+<i class="ri-bank-card-line"></i>
+</button>
+<button onclick="handlePayment('netbanking')" class="w-full flex items-center justify-between p-4 border rounded-button hover:bg-gray-50">
+<span>Net Banking</span>
+<i class="ri-bank-line"></i>
+</button>
+</div>
+<button onclick="closePaymentModal()" class="mt-4 w-full bg-gray-200 text-gray-800 py-2 rounded-button hover:bg-gray-300">
+Cancel
+</button>
+</div>
+`;
+document.body.appendChild(paymentModal);
+};
+window.handlePayment = function(method) {
+// Simulate payment processing
+const processingModal = document.createElement('div');
+processingModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+processingModal.innerHTML = `
+<div class="bg-white rounded-lg p-8 text-center">
+<i class="ri-loader-4-line ri-3x animate-spin text-primary"></i>
+<p class="mt-4">Processing payment...</p>
+</div>
+`;
+document.body.appendChild(processingModal);
+setTimeout(() => {
+processingModal.remove();
+localStorage.removeItem('cartItems');
+window.location.href = '/order-success.html';
+}, 2000);
+};
+window.closePaymentModal = function() {
+document.querySelector('.fixed.inset-0').remove();
+};
+updateCart();
+}
+function toggleUserMenu() {
+const dropdown = document.getElementById('userDropdown');
+dropdown.classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+const userMenu = document.getElementById('userMenu');
+const dropdown = document.getElementById('userDropdown');
+if (!userMenu.contains(e.target)) {
+dropdown.classList.add('hidden');
+}
+});
+document.getElementById('cartButton').addEventListener('click', function() {
+this.querySelector('button').classList.add('cart-bounce');
+setTimeout(() => {
+this.querySelector('button').classList.remove('cart-bounce');
+}, 500);
+});
+document.getElementById('contactFloat').addEventListener('click', function() {
+const contactOptions = document.createElement('div');
+contactOptions.className = 'fixed bottom-24 right-6 bg-white rounded-lg shadow-xl p-4 slide-enter';
+contactOptions.innerHTML = `
+<div class="space-y-4">
+<a href="tel:7676154124" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+<i class="ri-phone-line"></i>
+<span>Call Us</span>
+</a>
+<a href="mailto:rawatandsonstechno@gmail.com" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+<i class="ri-mail-line"></i>
+<span>Email Us</span>
+</a>
+<a href="#" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+<i class="ri-whatsapp-line"></i>
+<span>WhatsApp</span>
+</a>
+</div>
+`;
+document.body.appendChild(contactOptions);
+setTimeout(() => {
+document.addEventListener('click', function closeMenu(e) {
+if (!contactOptions.contains(e.target) && e.target !== document.getElementById('contactFloat')) {
+contactOptions.remove();
+document.removeEventListener('click', closeMenu);
+}
+});
+}, 0);
+});
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+const successMessage = document.createElement('div');
+successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg slide-enter';
+successMessage.textContent = 'Thank you for your submission!';
+document.body.appendChild(successMessage);
+form.reset();
+setTimeout(() => {
+successMessage.remove();
+}, 3000);
+});
+});
+</script>
+</body>
+</html>
